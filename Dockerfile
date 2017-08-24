@@ -14,7 +14,7 @@ RUN chmod +x /bin/start.sh /bin/sqs_send.sh
 ONBUILD ADD crontab.txt /etc/cron.d/thecron
 
 # Give execution rights on the cron job
-RUN chmod 0644 /etc/cron.d/thecron
+ONBUILD RUN chmod 0644 /etc/cron.d/thecron
 
 # Create the log file to be able to run tail
 RUN touch /var/log/cron.log
