@@ -7,6 +7,10 @@ RUN echo "Asia/Shanghai" > /etc/timezone \
 
 RUN pip install awscli --upgrade
 
+RUN apt-get update \
+ && apt-get install --no-install-recommends -y \
+ cron
+
 COPY start.sh sqs_send.sh /bin/
 RUN chmod +x /bin/start.sh /bin/sqs_send.sh
 
