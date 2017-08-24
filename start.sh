@@ -3,5 +3,5 @@ env | sed 's/^\(.*\)$/export \1/g' > /root/envs.sh
 chmod +x /root/envs.sh
 
 # Run the command on container startup
-cron && tail -f /var/log/cron.log
+touch /var/log/cron.log && cron && tail -f /var/log/cron.log
 

@@ -20,9 +20,6 @@ ONBUILD ADD crontab.txt /etc/cron.d/thecron
 # Give execution rights on the cron job
 ONBUILD RUN chmod 0644 /etc/cron.d/thecron
 
-# Create the log file to be able to run tail
-RUN touch /var/log/cron.log
-
 # start script
 CMD /bin/bash /bin/start.sh
 
