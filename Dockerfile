@@ -1,15 +1,15 @@
-FROM python
+FROM ubuntu
 
 # inspired from https://devblog.digimondo.io/how-to-use-environment-variables-in-docker-with-cron-50b20baab430
 
 RUN echo "Asia/Shanghai" > /etc/timezone \
   && dpkg-reconfigure -f noninteractive tzdata
 
-RUN pip install awscli --upgrade
-
 RUN apt-get update \
  && apt-get install --no-install-recommends -y \
- cron
+ python python-pip cron
+
+RUN pip install awscli --upgrade
 
 COPY start.sh sqs_send.sh /bin/
 RUN chmod +x /bin/start.sh /bin/sqs_send.sh
